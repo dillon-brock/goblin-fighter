@@ -3,10 +3,21 @@ const state = {};
 
 // initialize state, also used in test
 export function initialize() {
-    // What is the initial shape of state?
-    // For example:
-    // state.game = null;
-    // state.pastGames = [];
+    state.message = '';
+    state.goblins = [
+        {
+            name: "B. Gobblin'",
+            points: 2,
+            defeated: false
+        },
+        {
+            name: 'Frank',
+            points: 4,
+            defeated: false
+        }
+    ];
+    state.goblinPoints = [1, 2, 2, 2, 3, 3, 3, 3, 4, 4];
+    state.healthPoints = 10;
 }
 // call initialize
 initialize();
