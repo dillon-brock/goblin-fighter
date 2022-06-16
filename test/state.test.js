@@ -58,6 +58,7 @@ test('adds goblin to goblins array', (expect) => {
             defeated: false
         }
     ]);
+    expect.equal(state.message, 'You challenged Brandon!');
 });
 
 test('sets message', (expect) => {

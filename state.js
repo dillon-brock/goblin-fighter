@@ -29,12 +29,14 @@ initialize();
 export default state;
 
 // export dispatch functions that modify state
-export function addGoblin(goblin) {
-    state.goblins.push(goblin);
-}
 
 export function setMessage(message) {
     state.message = message;
+}
+
+export function addGoblin(goblin) {
+    state.goblins.push(goblin);
+    setMessage(`You challenged ${goblin.name}!`);
 }
 
 export function fightMessage(damage, fighter, goblin) {
