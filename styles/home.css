@@ -47,6 +47,10 @@
     margin-top: 60px;
 }
 
+#character-display img {
+    height: 500px;
+}
+
 #goblin-section {
     display: flex;
     flex-direction: column;

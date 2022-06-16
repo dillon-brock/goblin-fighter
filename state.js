@@ -1,4 +1,3 @@
-import { getRandomItem } from './utils.js';
 // set state to an empty object
 const state = {};
 

@@ -79,6 +79,5 @@ display();
 
 
 //TO DO:
-// fix message bug when fighting (how???)
 // change avatar display on game over
 // styling (fix hp/game over display)
