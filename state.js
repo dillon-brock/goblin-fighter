@@ -46,6 +46,15 @@ export function fightMessage(damage, fighter, goblin) {
     }
 }
 
+export function damageGoblin(damage, goblin) {
+    goblin.points -= damage;
+    if (goblin.points < 0) goblin.points = 0;
+}
+
+export function damageUser(damage) {
+    state.healthPoints -= damage;
+}
+
 export function updateGoblin(goblin) {
     const index = state.goblins.indexOf(goblin);
     if (index !== -1) {

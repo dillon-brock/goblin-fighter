@@ -1,6 +1,6 @@
 // import services and utilities
 import { getRandomItem } from './utils.js';
-import state, { addGoblin, updateGoblin, setMessage, fightMessage } from './state.js';
+import state, { addGoblin, updateGoblin, setMessage, fightMessage, damageGoblin, damageUser } from './state.js';
 // import component creators
 import createCharacter from './components/Character.js';
 import createAddGoblin from './components/AddGoblin.js';
@@ -19,16 +19,26 @@ const CreateGoblins = createGoblins(document.getElementById('goblins-display'), 
         const goblinDamage = getRandomItem(damage);
 
         fightMessage(userDamage, 'user', goblin.name);
+        damageGoblin(userDamage, goblin);
         display();
 
-        setTimeout(() => {
-            fightMessage(goblinDamage, 'goblin', goblin.name);
-            display();
+        if (goblin.points) {
             setTimeout(() => {
-                setMessage('');
+                fightMessage(goblinDamage, 'goblin', goblin.name);
+                damageUser(goblinDamage);
+                display();
+                setTimeout(() => {
+                    setMessage('');
+                    display();
+                }, 2000);
+            }, 2000);
+        }
+        else {
+            setTimeout(() => {
+                setMessage(`You defeated ${goblin.name}!`);
                 display();
             }, 2000);
-        }, 2000);
+        }
     }
 });
 
