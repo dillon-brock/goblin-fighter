@@ -106,3 +106,8 @@ test('goblin damaged in fight', (expect) => {
     damageGoblin(2, goblin);
     expect.equal(goblin.points, 2);
 });
+
+test('user damaged in fight', (expect) => {
+    damageUser(2);
+    expect.equal(state.healthPoints, 8);
+});
