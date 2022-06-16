@@ -28,3 +28,7 @@ export default state;
 export function addGoblin(goblin) {
     state.goblins.push(goblin);
 }
+
+export function setMessage(message) {
+    state.message = message;
+}

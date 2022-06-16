@@ -1,6 +1,7 @@
 import state, {
     initialize,
-    addGoblin
+    addGoblin,
+    setMessage
     // import dispatch functions
 } from '../state.js';
 
@@ -53,4 +54,10 @@ test('adds goblin to goblins array', (expect) => {
             defeated: false
         }
     ]);
+});
+
+test('sets message', (expect) => {
+    state.message = '';
+    setMessage('this is a message');
+    expect.equal(state.message, 'this is a message');
 });
