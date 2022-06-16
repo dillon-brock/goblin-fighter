@@ -1,28 +1,30 @@
 // import services and utilities
 import { getRandomItem } from './utils.js';
-import state, { addGoblin } from './state.js';
+import state, { addGoblin, updateGoblin, setMessage } from './state.js';
 // import component creators
 import createCharacter from './components/Character.js';
 import createAddGoblin from './components/AddGoblin.js';
 import createGoblins from './components/Goblins.js';
 import createMessage from './components/Message.js';
 import createDefeatedGoblins from './components/DefeatedGoblins.js';
-// import state and dispatch functions
 
-// Create each component: 
-// - pass in the root element via querySelector
-// - pass any needed handler functions as properties of an actions object 
+const damage = [0, 0, 1, 1, 1, 1, 2];
+
 const CreateMessage = createMessage(document.getElementById('message'));
 const CreateDefeatedGoblins = createDefeatedGoblins(document.getElementById('defeated-goblins'));
 const CreateCharacter = createCharacter(document.getElementById('character-display'));
-const CreateGoblins = createGoblins(document.getElementById('goblins-display'));
+const CreateGoblins = createGoblins(document.getElementById('goblins-display'), {
+    
+});
 
 const CreateAddGoblin = createAddGoblin(document.querySelector('form'), {
     handleAddGoblin: (name) => {
         const goblin = {
             name,
             points: getRandomItem(state.goblinPoints),
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         };
         addGoblin(goblin);
         display();

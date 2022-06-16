@@ -8,12 +8,16 @@ export function initialize() {
         {
             name: "B. Gobblin'",
             points: 2,
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         },
         {
             name: 'Frank',
             points: 4,
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         }
     ];
     state.goblinPoints = [1, 2, 2, 2, 3, 3, 3, 3, 4, 4];
@@ -31,6 +35,15 @@ export function addGoblin(goblin) {
 
 export function setMessage(message) {
     state.message = message;
+}
+
+export function fightMessage(damage, fighter, goblin) {
+    if (fighter === 'user') {
+        !damage ? setMessage(`You tried to hit ${goblin} but missed!`) : setMessage(`You hit ${goblin} for ${damage} damage`);
+    }
+    else {
+        !damage ? setMessage(`${goblin} tried to hit you but missed!`) : setMessage(`${goblin} hit you for ${damage} damage`);
+    }
 }
 
 export function updateGoblin(goblin) {
