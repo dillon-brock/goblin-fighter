@@ -32,3 +32,10 @@ export function addGoblin(goblin) {
 export function setMessage(message) {
     state.message = message;
 }
+
+export function updateGoblin(goblin) {
+    const index = state.goblins.indexOf(goblin);
+    if (index !== -1) {
+        state.goblins[index] = goblin;
+    }
+}

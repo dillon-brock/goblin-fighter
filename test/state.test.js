@@ -1,7 +1,8 @@
 import state, {
     initialize,
     addGoblin,
-    setMessage
+    setMessage,
+    updateGoblin
     // import dispatch functions
 } from '../state.js';
 
@@ -60,4 +61,21 @@ test('sets message', (expect) => {
     state.message = '';
     setMessage('this is a message');
     expect.equal(state.message, 'this is a message');
+});
+
+test('updates goblin in goblin array', (expect) => {
+
+    const goblin = state.goblins[0];
+    goblin.points--;
+    updateGoblin(goblin);
+    expect.deepEqual(state.goblins, [{
+        name: "B. Gobblin'",
+        points: 1,
+        defeated: false
+    },
+    {
+        name: 'Frank',
+        points: 4,
+        defeated: false
+    }]);
 });

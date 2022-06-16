@@ -105,3 +105,8 @@ button {
     justify-content: space-around;
     align-items: center;
 }
+
+.fight-button {
+    padding: 30px 20px;
+    font-size: 1.25rem;
+}

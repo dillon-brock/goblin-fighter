@@ -31,7 +31,12 @@ export function Goblin(goblin) {
     points.textContent = goblin.points;
     points.classList.add('goblin-points');
 
-    infoContainer.append(goblinImage, points);
+    const fightButton = document.createElement('button');
+    fightButton.textContent = 'Fight!';
+    fightButton.classList.add('fight-button');
+
+    infoContainer.append(goblinImage, points, fightButton);
+
 
     div.append(name, infoContainer);
 
