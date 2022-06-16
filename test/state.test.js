@@ -8,14 +8,22 @@ QUnit.module('state', { beforeEach: initialize });
 
 const test = QUnit.test;
 
-test('the first state test...', (expect) => {
-    // what is the initial expected state?
-
-    // use the action
-
-    // what should the state be now?
-
-
-    // remove this line when starting your test
-    expect.deepEqual(state, {});
+test('initialized state object', (expect) => {
+    expect.deepEqual(state, {
+        message: '',
+        goblins: [
+            {
+                name: "B. Gobblin'",
+                points: 2,
+                defeated: false
+            },
+            {
+                name: 'Frank',
+                points: 4,
+                defeated: false
+            }
+        ],
+        goblinPoints: [1, 2, 2, 2, 3, 3, 3, 3, 4, 4],
+        healthPoints: 10
+    });
 });
