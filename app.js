@@ -1,6 +1,6 @@
 // import services and utilities
 import { getRandomItem } from './utils.js';
-import state, { addGoblin, updateGoblin, setMessage } from './state.js';
+import state, { addGoblin, updateGoblin, setMessage, fightMessage } from './state.js';
 // import component creators
 import createCharacter from './components/Character.js';
 import createAddGoblin from './components/AddGoblin.js';
@@ -14,7 +14,22 @@ const CreateMessage = createMessage(document.getElementById('message'));
 const CreateDefeatedGoblins = createDefeatedGoblins(document.getElementById('defeated-goblins'));
 const CreateCharacter = createCharacter(document.getElementById('character-display'));
 const CreateGoblins = createGoblins(document.getElementById('goblins-display'), {
-    
+    handleFightGoblin(goblin) {
+        const userDamage = getRandomItem(damage);
+        const goblinDamage = getRandomItem(damage);
+
+        fightMessage(userDamage, 'user', goblin.name);
+        display();
+
+        setTimeout(() => {
+            fightMessage(goblinDamage, 'goblin', goblin.name);
+            display();
+            setTimeout(() => {
+                setMessage('');
+                display();
+            }, 2000);
+        }, 2000);
+    }
 });
 
 const CreateAddGoblin = createAddGoblin(document.querySelector('form'), {

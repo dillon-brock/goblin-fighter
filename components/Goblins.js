@@ -1,17 +1,17 @@
-export default function createGoblins(root) {
+export default function createGoblins(root, { handleFightGoblin }) {
 
     return ({ goblins }) => {
 
         root.innerHTML = '';
 
         for (const goblin of goblins) {
-            root.append(Goblin(goblin));
+            root.append(Goblin({ goblin, handleFightGoblin }));
         }
     };
 
 }
 
-export function Goblin(goblin) {
+export function Goblin({ goblin, handleFightGoblin }) {
 
     const div = document.createElement('div');
     div.classList.add('goblin');
@@ -34,6 +34,9 @@ export function Goblin(goblin) {
     const fightButton = document.createElement('button');
     fightButton.textContent = 'Fight!';
     fightButton.classList.add('fight-button');
+    fightButton.addEventListener('click', () => {
+        handleFightGoblin(goblin);
+    });
 
     infoContainer.append(goblinImage, points, fightButton);
 
