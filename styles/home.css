@@ -71,3 +71,37 @@ button {
     font-weight: 900;
     background-color: rgb(229, 165, 200);
 }
+
+#goblins-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.goblin {
+    background-color: rgba(81, 81, 252, 0.6);
+    padding-bottom: 16px;
+    width: 80%;
+    height: 240px;
+}
+
+.goblin-image {
+    height: 120px;
+}
+
+.goblin-name {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.goblin-points {
+    font-size: 3rem;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -1,6 +1,9 @@
 export default function createGoblins(root) {
 
     return ({ goblins }) => {
+
+        root.innerHTML = '';
+
         for (const goblin of goblins) {
             root.append(Goblin(goblin));
         }
@@ -17,6 +20,9 @@ export function Goblin(goblin) {
     name.textContent = goblin.name;
     name.classList.add('goblin-name');
 
+    const infoContainer = document.createElement('div');
+    infoContainer.classList.add('info-container');
+
     const goblinImage = document.createElement('img');
     goblinImage.src = goblin.points ? '../assets/fighting-goblin.png' : '../assets/dead-goblin.png';
     goblinImage.classList.add('goblin-image');
@@ -25,7 +31,9 @@ export function Goblin(goblin) {
     points.textContent = goblin.points;
     points.classList.add('goblin-points');
 
-    div.append(name, goblinImage, points);
+    infoContainer.append(goblinImage, points);
+
+    div.append(name, infoContainer);
 
     return div;
 

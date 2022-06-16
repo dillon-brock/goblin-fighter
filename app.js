@@ -30,8 +30,8 @@ const CreateAddGoblin = createAddGoblin(document.querySelector('form'), {
 function display() {
     // Call each component passing in props that are the pieces of state this component needs
     CreateCharacter({ healthPoints: state.healthPoints });
-    CreateGoblins({ goblins: state.goblins });
     CreateAddGoblin();
+    CreateGoblins({ goblins: state.goblins });
 
 }
 
