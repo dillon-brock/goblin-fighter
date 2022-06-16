@@ -34,6 +34,7 @@ export function Goblin({ goblin, handleFightGoblin }) {
     const fightButton = document.createElement('button');
     fightButton.textContent = 'Fight!';
     fightButton.classList.add('fight-button');
+
     fightButton.addEventListener('click', () => {
         handleFightGoblin(goblin);
     });

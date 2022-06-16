@@ -3,7 +3,9 @@ import state, {
     addGoblin,
     setMessage,
     updateGoblin,
-    fightMessage
+    fightMessage,
+    damageGoblin,
+    damageUser
     // import dispatch functions
 } from '../state.js';
 
@@ -27,7 +29,7 @@ test('initialized state object', (expect) => {
                 defeated: false
             }
         ],
-        goblinPoints: [1, 2, 2, 2, 3, 3, 3, 3, 4, 4],
+        goblinPoints: [2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6],
         healthPoints: 10
     });
 });
@@ -91,4 +93,16 @@ test('sets message based on damage in fight', (expect) => {
     expect.equal(state.message, 'You tried to hit Frank but missed!');
     fightMessage(0, 'goblin', 'Bartleby');
     expect.equal(state.message, 'Bartleby tried to hit you but missed!');
+});
+
+test('goblin damaged in fight', (expect) => {
+    const goblin = {
+        name: 'Frank',
+        points: 4,
+        get defeated() {
+            return this.points <= 0;
+        }
+    };
+    damageGoblin(2, goblin);
+    expect.equal(goblin.points, 2);
 });

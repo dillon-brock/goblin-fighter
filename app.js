@@ -8,18 +8,24 @@ import createGoblins from './components/Goblins.js';
 import createMessage from './components/Message.js';
 import createDefeatedGoblins from './components/DefeatedGoblins.js';
 
-const damage = [0, 0, 1, 1, 1, 1, 2];
+const damageValues = [0, 0, 1, 1, 1, 1, 2];
 
 const CreateMessage = createMessage(document.getElementById('message'));
 const CreateDefeatedGoblins = createDefeatedGoblins(document.getElementById('defeated-goblins'));
 const CreateCharacter = createCharacter(document.getElementById('character-display'));
 const CreateGoblins = createGoblins(document.getElementById('goblins-display'), {
+    handleGameOver(healthPoints) {
+        if (healthPoints <= 0) setMessage('Game Over!');
+        display();
+    },
     handleFightGoblin(goblin) {
-        const userDamage = getRandomItem(damage);
-        const goblinDamage = getRandomItem(damage);
+        
+        const userDamage = getRandomItem(damageValues);
+        const goblinDamage = getRandomItem(damageValues);
 
         fightMessage(userDamage, 'user', goblin.name);
         damageGoblin(userDamage, goblin);
+        updateGoblin(goblin);
         display();
 
         if (goblin.points) {
@@ -69,3 +75,10 @@ function display() {
 
 // Call display on page load
 display();
+
+
+
+//TO DO:
+// fix message bug when fighting (how???)
+// change avatar display on game over
+// styling (fix hp/game over display)

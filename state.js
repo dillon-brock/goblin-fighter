@@ -1,3 +1,4 @@
+import { getRandomItem } from './utils.js';
 // set state to an empty object
 const state = {};
 
@@ -20,7 +21,7 @@ export function initialize() {
             }
         }
     ];
-    state.goblinPoints = [1, 2, 2, 2, 3, 3, 3, 3, 4, 4];
+    state.goblinPoints = [2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6];
     state.healthPoints = 10;
 }
 // call initialize
