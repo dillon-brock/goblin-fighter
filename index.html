@@ -23,25 +23,28 @@
     </header>
 
     <main>
-        <section id="message"></section>
+        <section id="message-section">
+            <span>Message</span>
+        </section>
 
-        <section id="add-goblin">
+        <section id="stats">
+            <div id="defeated-goblins-section">
+                <p>You have defeated <span id="defeated-goblins">0</span> goblins</p>
+            </div>
+            <div id="character-display">
+                <p>Your HP: <span id="health-points"></span></p>
+                <img src="./assets/goblin-fighter-avatar.png">
+            </div>
+        </section>
+
+        <section id="goblin-section">
             <form>
                 <input name="name">
                 <button>Challenge New Goblin</button>
             </form>
+            <div id="goblins-display"></div>
         </section>
 
-        <section id="defeated-goblins-section">
-            <p>You have defeated <span id="defeated-goblins"></span> goblins</p>
-        </section>
-
-        <section id="character-display">
-            <p>Your HP: <span id="health-points"></span></p>
-            <img src="">
-        </section>
-
-        <section id="goblins-display"></section>
     </main>
 
     <footer>&copy;2022 Aspiring Software Developer</footer>

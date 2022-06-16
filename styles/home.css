@@ -1,1 +1,73 @@
 /* CSS for home page (index.html) */
+
+#message-section {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(191, 207, 176);
+}
+
+#stats {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    float: left;
+    align-items: center;
+}
+
+#defeated-goblins-section {
+    background-color: rgba(81, 81, 252, 0.6);
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+
+#character-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#character-display p {
+    background-color:bisque;
+    text-align: center;
+    width: 60%;
+    padding: 24px;
+    margin-top: 60px;
+}
+
+#goblin-section {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    background-color: rgba(255, 99, 71, 0.8);
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+
+input {
+    font-size: 1.75rem;
+    margin-top: 20px;
+    width: 90%;
+}
+
+button {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 900;
+    background-color: rgb(229, 165, 200);
+}
