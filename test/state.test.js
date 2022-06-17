@@ -21,15 +21,19 @@ test('initialized state object', (expect) => {
             {
                 name: "B. Gobblin'",
                 points: 2,
-                defeated: false
+                get defeated() {
+                    return this.points <= 0;
+                }
             },
             {
                 name: 'Frank',
                 points: 4,
-                defeated: false
+                get defeated() {
+                    return this.points <= 0;
+                }
             }
         ],
-        goblinPoints: [2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6],
+        goblinPoints: [1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5],
         healthPoints: 10
     });
 });
@@ -38,27 +42,35 @@ test('adds goblin to goblins array', (expect) => {
     const goblin = {
         name: 'Brandon',
         points: 3,
-        defeated: false
+        get defeated() {
+            return this.points <= 0;
+        }
     };
     addGoblin(goblin);
     expect.deepEqual(state.goblins, [
         {
             name: "B. Gobblin'",
             points: 2,
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         },
         {
             name: 'Frank',
             points: 4,
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         },
         {
             name: 'Brandon',
             points: 3,
-            defeated: false
+            get defeated() {
+                return this.points <= 0;
+            }
         }
     ]);
-    expect.equal(state.message, 'You challenged Brandon!');
+    expect.equal(state.message, 'You challenged Brandon! HP: 3');
 });
 
 test('sets message', (expect) => {
@@ -75,12 +87,16 @@ test('updates goblin in goblin array', (expect) => {
     expect.deepEqual(state.goblins, [{
         name: "B. Gobblin'",
         points: 1,
-        defeated: false
+        get defeated() {
+            return this.points <= 0;
+        }
     },
     {
         name: 'Frank',
         points: 4,
-        defeated: false
+        get defeated() {
+            return this.points <= 0;
+        }
     }]);
 });
 

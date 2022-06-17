@@ -21,7 +21,7 @@ export function initialize() {
         }
     ];
     state.goblinPoints = [1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5];
-    state.healthPoints = 1;
+    state.healthPoints = 10;
 }
 // call initialize
 initialize();
