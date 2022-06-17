@@ -41,7 +41,7 @@ const CreateGoblins = createGoblins(document.getElementById('goblins-display'), 
                 }
                 else {
                     setTimeout(() => {
-                        setMessage('Game over! You died');
+                        setMessage('Game over! You died!');
                         display();
                     }, 2000);
                 }
