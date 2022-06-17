@@ -9,50 +9,41 @@ import createMessage from './components/Message.js';
 import createDefeatedGoblins from './components/DefeatedGoblins.js';
 
 const damageValues = [0, 0, 1, 1, 1, 1, 2];
-let gameOver = false;
 
 const CreateMessage = createMessage(document.getElementById('message'));
 const CreateDefeatedGoblins = createDefeatedGoblins(document.getElementById('defeated-goblins'));
 const CreateCharacter = createCharacter(document.getElementById('character-display'));
 const CreateGoblins = createGoblins(document.getElementById('goblins-display'), {
-    handleGameOver(healthPoints) {
-        if (healthPoints <= 0) setMessage('Game Over!');
-        gameOver = true;
+    handleGameOver() {
+        setMessage("Game Over! You can't fight any more goblins");
         display();
     },
     handleFightGoblin(goblin) {
+        const userDamage = getRandomItem(damageValues);
+        const goblinDamage = getRandomItem(damageValues);
 
-        if (!gameOver) {
-            const userDamage = getRandomItem(damageValues);
-            const goblinDamage = getRandomItem(damageValues);
+        fightMessage(userDamage, 'user', goblin.name);
+        damageGoblin(userDamage, goblin);
+        updateGoblin(goblin);
+        display();
 
-            fightMessage(userDamage, 'user', goblin.name);
-            damageGoblin(userDamage, goblin);
-            updateGoblin(goblin);
-            display();
-
-            if (goblin.points) {
+        if (goblin.points) {
+            setTimeout(() => {
+                fightMessage(goblinDamage, 'goblin', goblin.name);
+                damageUser(goblinDamage);
+                display();
                 setTimeout(() => {
-                    fightMessage(goblinDamage, 'goblin', goblin.name);
-                    damageUser(goblinDamage);
-                    display();
-                    setTimeout(() => {
-                        setMessage('');
-                        display();
-                    }, 2000);
-                }, 2000);
-            }
-            else {
-                setTimeout(() => {
-                    setMessage(`You defeated ${goblin.name}!`);
+                    setMessage('');
                     display();
                 }, 2000);
-            }
+            }, 2000);
         }
         else {
-            setMessage("Game Over! You can't fight any more goblins");
-            display();
-        } 
+            setTimeout(() => {
+                setMessage(`You defeated ${goblin.name}!`);
+                display();
+            }, 2000);
+        }
     }
 });
 
@@ -76,13 +67,10 @@ function display() {
     CreateMessage({ message: state.message });
     CreateDefeatedGoblins({ goblins: state.goblins });
     CreateCharacter({ healthPoints: state.healthPoints });
-    CreateGoblins({ goblins: state.goblins });
+    CreateGoblins({ goblins: state.goblins, healthPoints: state.healthPoints });
     CreateAddGoblin();
 
 }
 
 // Call display on page load
 display();
-
-// TO DO:
-// make it so you can't fight goblins when you have no hp

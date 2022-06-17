@@ -1,17 +1,17 @@
-export default function createGoblins(root, { handleFightGoblin }) {
+export default function createGoblins(root, { handleFightGoblin, handleGameOver }) {
 
-    return ({ goblins }) => {
+    return ({ goblins, healthPoints }) => {
 
         root.innerHTML = '';
 
         for (const goblin of goblins) {
-            root.append(Goblin({ goblin, handleFightGoblin }));
+            root.append(Goblin({ goblin, healthPoints, handleFightGoblin, handleGameOver }));
         }
     };
 
 }
 
-export function Goblin({ goblin, handleFightGoblin }) {
+export function Goblin({ goblin, healthPoints, handleFightGoblin, handleGameOver }) {
 
     const div = document.createElement('div');
     div.classList.add('goblin');
@@ -36,7 +36,12 @@ export function Goblin({ goblin, handleFightGoblin }) {
     fightButton.classList.add('fight-button');
 
     fightButton.addEventListener('click', () => {
-        handleFightGoblin(goblin);
+        if (healthPoints > 0) {
+            handleFightGoblin(goblin);
+        }
+        else {
+            handleGameOver();
+        }
     });
 
     infoContainer.append(goblinImage, points, fightButton);
