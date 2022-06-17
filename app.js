@@ -9,6 +9,7 @@ import createMessage from './components/Message.js';
 import createDefeatedGoblins from './components/DefeatedGoblins.js';
 
 const damageValues = [0, 0, 1, 1, 1, 1, 2];
+let gameOver = false;
 
 const CreateMessage = createMessage(document.getElementById('message'));
 const CreateDefeatedGoblins = createDefeatedGoblins(document.getElementById('defeated-goblins'));
@@ -16,11 +17,12 @@ const CreateCharacter = createCharacter(document.getElementById('character-displ
 const CreateGoblins = createGoblins(document.getElementById('goblins-display'), {
     handleGameOver(healthPoints) {
         if (healthPoints <= 0) setMessage('Game Over!');
+        gameOver = true;
         display();
     },
     handleFightGoblin(goblin) {
 
-        if (state.healthPoints > 0) {
+        if (!gameOver) {
             const userDamage = getRandomItem(damageValues);
             const goblinDamage = getRandomItem(damageValues);
 
