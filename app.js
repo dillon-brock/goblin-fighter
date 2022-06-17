@@ -19,32 +19,38 @@ const CreateGoblins = createGoblins(document.getElementById('goblins-display'), 
         display();
     },
     handleFightGoblin(goblin) {
-        
-        const userDamage = getRandomItem(damageValues);
-        const goblinDamage = getRandomItem(damageValues);
 
-        fightMessage(userDamage, 'user', goblin.name);
-        damageGoblin(userDamage, goblin);
-        updateGoblin(goblin);
-        display();
+        if (state.healthPoints > 0) {
+            const userDamage = getRandomItem(damageValues);
+            const goblinDamage = getRandomItem(damageValues);
 
-        if (goblin.points) {
-            setTimeout(() => {
-                fightMessage(goblinDamage, 'goblin', goblin.name);
-                damageUser(goblinDamage);
-                display();
+            fightMessage(userDamage, 'user', goblin.name);
+            damageGoblin(userDamage, goblin);
+            updateGoblin(goblin);
+            display();
+
+            if (goblin.points) {
                 setTimeout(() => {
-                    setMessage('');
+                    fightMessage(goblinDamage, 'goblin', goblin.name);
+                    damageUser(goblinDamage);
+                    display();
+                    setTimeout(() => {
+                        setMessage('');
+                        display();
+                    }, 2000);
+                }, 2000);
+            }
+            else {
+                setTimeout(() => {
+                    setMessage(`You defeated ${goblin.name}!`);
                     display();
                 }, 2000);
-            }, 2000);
+            }
         }
         else {
-            setTimeout(() => {
-                setMessage(`You defeated ${goblin.name}!`);
-                display();
-            }, 2000);
-        }
+            setMessage("Game Over! You can't fight any more goblins");
+            display();
+        } 
     }
 });
 
@@ -76,8 +82,5 @@ function display() {
 // Call display on page load
 display();
 
-
-
-//TO DO:
-// change avatar display on game over
-// styling (fix hp/game over display)
+// TO DO:
+// make it so you can't fight goblins when you have no hp
