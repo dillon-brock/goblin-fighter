@@ -35,14 +35,16 @@ export function Goblin({ goblin, healthPoints, handleFightGoblin, handleGameOver
     fightButton.textContent = 'Fight!';
     fightButton.classList.add('fight-button');
 
-    fightButton.addEventListener('click', () => {
-        if (healthPoints > 0) {
-            handleFightGoblin(goblin);
-        }
-        else {
-            handleGameOver();
-        }
-    });
+    if (goblin.points > 0) {
+        fightButton.addEventListener('click', () => {
+            if (healthPoints > 0) {
+                handleFightGoblin(goblin);
+            }
+            else {
+                handleGameOver();
+            }
+        });
+    }
 
     infoContainer.append(goblinImage, points, fightButton);
 

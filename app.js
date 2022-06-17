@@ -74,3 +74,10 @@ function display() {
 
 // Call display on page load
 display();
+
+//To Do:
+
+//  add to message that user died if they do
+//  disable clicking on dead goblins
+// change goblin points range to 1-5
+// include name and hp in message when adding new goblin
