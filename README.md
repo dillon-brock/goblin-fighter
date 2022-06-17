@@ -1,3 +1,7 @@
+## Planning:
+
+https://miro.com/app/board/uXjVOs2c5EQ=/?share_link_id=455695439052
+
 ## The Golden Rule:
 
 🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
