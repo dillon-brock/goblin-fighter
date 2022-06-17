@@ -32,10 +32,19 @@ const CreateGoblins = createGoblins(document.getElementById('goblins-display'), 
                 fightMessage(goblinDamage, 'goblin', goblin.name);
                 damageUser(goblinDamage);
                 display();
-                setTimeout(() => {
-                    setMessage('');
-                    display();
-                }, 2000);
+
+                if (state.healthPoints > 0) {
+                    setTimeout(() => {
+                        setMessage('');
+                        display();
+                    }, 2000);
+                }
+                else {
+                    setTimeout(() => {
+                        setMessage('Game over! You died');
+                        display();
+                    }, 2000);
+                }
             }, 2000);
         }
         else {
@@ -74,10 +83,3 @@ function display() {
 
 // Call display on page load
 display();
-
-//To Do:
-
-//  add to message that user died if they do
-//  disable clicking on dead goblins
-// change goblin points range to 1-5
-// include name and hp in message when adding new goblin

@@ -20,8 +20,8 @@ export function initialize() {
             }
         }
     ];
-    state.goblinPoints = [2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6];
-    state.healthPoints = 10;
+    state.goblinPoints = [1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5];
+    state.healthPoints = 1;
 }
 // call initialize
 initialize();
@@ -36,7 +36,7 @@ export function setMessage(message) {
 
 export function addGoblin(goblin) {
     state.goblins.push(goblin);
-    setMessage(`You challenged ${goblin.name}!`);
+    setMessage(`You challenged ${goblin.name}! HP: ${goblin.points}`);
 }
 
 export function fightMessage(damage, fighter, goblin) {
